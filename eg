@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 ## Easy GIT (eg), a frontend for git designed for former cvs and svn users
-## Version 1.7.5.2
+## Version 1.7.5.3
 ## Copyright 2008-2013 by Elijah Newren and others
 ## Licensed under GNU GPL, version 2.
 
@@ -28,7 +28,7 @@ my $USE_PAGER = exists($ENV{EASYGIT_USE_PAGER}) ? $ENV{EASYGIT_USE_PAGER} : -1;
 
 # globals :-(
 my $OUTFH;
-my $VERSION = "1.7.5.2";
+my $VERSION = "1.7.5.3";
 my $EG_EXEC = abs_path($0);
 my %ALIAS;
 my %COMMAND;    # command=>{section, short_description} mapping
@@ -149,7 +149,7 @@ sub new {
       my ($ret, $output) =
         ExecUtil::execute_captured("$GIT_CMD --version", ignore_ret => 1);
       if ($ret != 0 || $output !~ /^git version .*$/) {
-      die "Error: Cannot execute git (check your git installation)!\n";
+	  die "Error: Cannot execute git (check your git installation)!\n";
       }
 
       # 3) They just aren't in a project tracked by git
@@ -1989,9 +1989,9 @@ You can run
   eg ls-files --unmerged
 to get a list of all files in the unmerged state.  This will list up to
 three lines for each file, and look like the following:
-  100644 45b983be36b73c0788dc9cbcb76cbb80fc7bb057 1 foo.C
-  100644 ce013625030ba8dba906f756967f9e9ca394464a 2 foo.C
-  100644 dd7e1c6f0fefe118f0b63d9f10908c460aa317a6 3 foo.C
+  100644 45b983be36b73c0788dc9cbcb76cbb80fc7bb057 1	foo.C
+  100644 ce013625030ba8dba906f756967f9e9ca394464a 2	foo.C
+  100644 dd7e1c6f0fefe118f0b63d9f10908c460aa317a6 3	foo.C
 The first line corresponds to a version of the file at some common point in
 history, the second and third lines correspond to different versions of the
 file being merged (relative to the common version).  Each line is of the
@@ -5858,7 +5858,7 @@ EOF
     my $stash_description = "@ARGV";
     my $single_word_desc = (scalar(@ARGV) == 1);
     @ARGV = ();
-    if ($stash_description =~ m#^stash\@{[^{]+}$# ||
+    if ($stash_description =~ m#^stash\@\{[^{]+\}$# ||
         ($single_word_desc && RepoUtil::valid_ref($stash_description))) {
       push(@args, $stash_description)
     } else {
@@ -5923,7 +5923,7 @@ sub run {
 
     my @lines = split('\n', $output);
     my $regex = 
-      qr#(stash\@{[^}]+}): (?:WIP )?[Oo]n [^:]*: (?:[0-9a-f]+\.\.\. )?#;
+      qr#(stash\@\{[^}]+\}): (?:WIP )?[Oo]n [^:]*: (?:[0-9a-f]+\.\.\. )?#;
     foreach my $line (@lines) {
       if ($self->{show_details}) {
         print "$line\n";
@@ -7699,7 +7699,7 @@ sub quote_args (@) {
   my @newargs;
   foreach my $arg (@args) {
     my $quotes_needed = 0;
-    if (!$arg || $arg =~ /[;'"<>()\[\]|`*   \n\$\\~]/) {
+    if (!$arg || $arg =~ /[;'"<>()\[\]|`* 	\n\$\\~]/) {
       $quotes_needed = 1;
     }
 
