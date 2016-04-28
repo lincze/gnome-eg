@@ -1,4 +1,6 @@
-sy GIT (eg), a frontend for git designed for former cvs and svn users
+#!/usr/bin/perl -w
+
+## Easy GIT (eg), a frontend for git designed for former cvs and svn users
 ## Version 1.7.5.2
 ## Copyright 2008-2013 by Elijah Newren and others
 ## Licensed under GNU GPL, version 2.
