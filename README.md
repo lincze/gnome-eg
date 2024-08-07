@@ -1,21 +1,25 @@
 # gnome-eg
-Store gome eg (a git wrapper in perl) at github.
+Store gnome ```eg``` (a simple and coherent git cli wrapper in perl) at github.
 
 ## eg original
 
-The original eg project is available here:
-
+The original ```eg``` project was available here, unfortunately these URLs ceased to work:
 
  - main page: https://people.gnome.org/~newren/eg/
  - downloads:  https://people.gnome.org/~newren/eg/download/
  - online docs: https://people.gnome.org/~newren/eg/documentation/
 
+You can be lucky with archive.org:
 
-The gitorious repo (https://gitorious.org/projects/eg) unfotunately ceased to work.
+ - https://web.archive.org/web/20190410220051/https://people.gnome.org/~newren/eg/
+ - https://web.archive.org/web/20190410220051/https://people.gnome.org/~newren/eg/download/
+ - https://web.archive.org/web/20190410220051/https://people.gnome.org/~newren/eg/documentation/
+
+The gitorious repo (https://gitorious.org/projects/eg) unfotunately ceased to work, too.
 
 This repo picks the last version (1.7.5.2) of eg, and tries to keep it
 
- - as simple as it was (i don't expect feature upgrades)
+ - as simple as it was (i don't expect any feature upgrades)
  - correct smaller problems if arised
 
 ## List of changes
@@ -45,4 +49,10 @@ This can be corrected with two pairs of backslash:
 >       qr#(stash\@\{[^}]+\}): (?:WIP )?[Oo]n [^:]*: (?:[0-9a-f]+\.\.\. )?#;
 ```
 
-We give it a version number 1.7.5.3, too.
+We give it a new version number 1.7.5.3, too.
+
+## Update
+
+- checked ```eg``` on fedora 39, git 2.45.2 w/ perl 5 version 38 - still OK.
+- corrected some typos in the README
+- replaced source URL-s with archive.org URLs
